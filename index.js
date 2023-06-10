@@ -35,7 +35,18 @@ const circleAmount = prompt(`How many circles would you like to begin with ? (de
 
 
 
-/* --------------------------------------------------------------------------------------------- */
+
+
+
+
+
+
+
+
+
+
+
+/* ------User Input Block Start----------------------------------------------------------------- */
 
 
 /* Getting radio input elements to select click type */
@@ -176,7 +187,20 @@ function windowResizeHandler() {
 window.addEventListener('resize', windowResizeHandler, true)
 
 
-/* --------------------------------------------------------------------------------------------- */
+/* ------User Input Block End------------------------------------------------------------------- */
+
+
+
+
+
+
+
+
+
+
+
+
+/* ------Circle Drawing & Interaction Block Start----------------------------------------------- */
 
 
 /* Initializing createCircle function, adding event listener to button and creating base circles */
@@ -243,7 +267,7 @@ function canvasInteraction(event) {
 
 
 
-    switch(selectedValue) {
+    switch(selectedClickType) {
         case '':
             console.log("No action selected.")
             break
@@ -271,8 +295,59 @@ for(let i = 0; i < circleAmount; i++) {
 canvas.addEventListener("click", (event) => canvasInteraction(event))
 
 
-/* --------------------------------------------------------------------------------------------- */
 
+/* Initializing border collision behavior functions */
+function borderBounce(circle) {
+    if(circle.x + circle.radius > canvas.width) {
+        circle.x = canvas.width - circle.radius
+        circle.dx *= -1
+        circle.dx *= elasticity
+    } else if(circle.x - circle.radius < 0) {
+        circle.x = circle.radius
+        circle.dx *= -1
+        circle.dx *= elasticity
+    }
+
+    if(circle.y + circle.radius > canvas.height) {
+        circle.y = canvas.height - circle.radius
+        circle.dy *= -1
+        circle.dy *= elasticity
+    } else if(circle.y - circle.radius < 0) {
+        circle.y = circle.radius
+        circle.dy *= -1
+        circle.dy *= elasticity
+    }
+}
+function borderWarp(circle) {
+    if(circle.x - circle.radius > canvas.width) {
+        circle.x = -circle.radius
+    } else if(circle.x + circle.radius < 0) {
+        circle.x = canvas.width + circle.radius
+    }
+
+    if(circle.y - circle.radius > canvas.height) {
+        circle.y = -circle.radius
+    } else if(circle.y + circle.radius < 0) {
+        circle.y = canvas.height + circle.radius
+    }
+}
+
+
+/* ------Circle Drawing & Interaction Block End------------------------------------------------- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ------Animation Block Start------------------------------------------------------------------ */
 
 
 /* Initializing canvas drawing function */
@@ -292,24 +367,15 @@ function drawCircles() {
         circle.x += circle.dx
         circle.y += circle.dy
 
-        if(circle.x + circle.radius > canvas.width) {
-            circle.x = canvas.width - circle.radius
-            circle.dx *= -1
-            circle.dx *= elasticity
-        } else if(circle.x - circle.radius < 0) {
-            circle.x = circle.radius
-            circle.dx *= -1
-            circle.dx *= elasticity
-        }
+        
 
-        if(circle.y + circle.radius > canvas.height) {
-            circle.y = canvas.height - circle.radius
-            circle.dy *= -1
-            circle.dy *= elasticity
-        } else if(circle.y - circle.radius < 0) {
-            circle.y = circle.radius
-            circle.dy *= -1
-            circle.dy *= elasticity
+        switch(selectedBehavior) {
+            case 'borderBounce':
+                borderBounce(circle)
+                break
+            case 'borderWarp':
+                borderWarp(circle)
+                break
         }
 
 
@@ -328,3 +394,6 @@ function animate() {
 }
 
 animate()
+
+
+/* ------Animation Block End-------------------------------------------------------------------- */
