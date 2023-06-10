@@ -72,3 +72,23 @@ label {
     font-size: 1.2rem;
 }
 
+.circle__counter__root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 4em;
+    height: 4em;
+
+    border-radius: 50%;
+    background-color: white;
+    color: black;
+
+    position: fixed;
+    top: 2%;
+    left: 2%;
+}
+
+.circle__counter__number {
+    font-size: 2em;
+}

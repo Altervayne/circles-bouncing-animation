@@ -13,9 +13,9 @@ const drag = 0.005                      /* Default to 0.001 */
 const elasticity = 1.3                  /* Default to 1.3 */
 
 /* Initializing the circles array and asking user how many circles to create */
-let maxCircles = 10                   /* Default to 10 */
+let maxCircles = 20                     /* Default to 20 */
 let circles = []
-const circleAmount = prompt("How many circles ?", "0")
+const circleAmount = prompt(`How many circles would you like to begin with ? (default maximum is ${maxCircles})`, "0")
 
 
 
@@ -51,7 +51,19 @@ maxCirclesInput.addEventListener("change", (event) => {
 
     maxCircles = maxCirclesInput.value
     maxCirclesDisplay.innerHTML = maxCirclesInput.value
+
+    while(circles.length > maxCircles) {
+        circles.pop()
+    }
 })
+
+
+/* Getting circle counter id to display amount of circles */
+const circleCounter = document.getElementById("circleCounter")
+
+function updateCounter() {
+    circleCounter.innerHTML = circles.length
+}
 
 
 /* --------------------------------------------------------------------------------------------- */
@@ -85,9 +97,11 @@ function addCircle(x, y) {
 
     circles.push(circle)
 
-    if(circles.length >= maxCircles) {
+    if(circles.length > maxCircles) {
         circles.shift()
     }
+
+    updateCounter()
 }
 
 /* Initializing interaction functions to interact with the canvas directly */
@@ -106,6 +120,8 @@ function removeCircle(clickX, clickY) {
     }
 
     circles = circles.filter(circle => circle.deleted === false)
+
+    updateCounter()
 }
 
 /* Initializing canvas interaction base event handler */
