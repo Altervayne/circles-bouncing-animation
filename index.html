@@ -11,8 +11,19 @@
 
 
     <body>
-        <h1>Cool Animation Boi</h1>
-        <button id="addBallButton">More Balls</button>
+        <h1>Cool Animation</h1>
+        <form id="animationSettings">
+            <p>On click,</p>
+
+            <input type="radio" id="clickTypeAdd" name="clickType" value="addCircle"></input>
+            <label for="clickTypeAdd">Add circle</label><br>
+
+            <input type="radio" id="clickTypeRecolor" name="clickType" value="recolorCircle"></input>
+            <label for="clickTypeRecolor">Recolor circle</label><br>
+
+            <input type="radio" id="clickTypeRemove" name="clickType" value="removeCircle"></input>
+            <label for="clickTypeRemove">Remove circle</label>
+        </form>
 
         <canvas id="backgroundCanvas"></canvas>
         

@@ -1,6 +1,6 @@
 /* Getting necessary elements */
 const canvas = document.getElementById("backgroundCanvas")
-const addButton = document.getElementById("addBallButton")
+/* const addButton = document.getElementById("addBallButton") */
 const ctx = canvas.getContext("2d")
 
 /* Setting canvas dimensions */
@@ -88,14 +88,14 @@ function canvasInteraction(event) {
 }
 
 /* Adding event listener on button to add a circle on click */
-addButton.addEventListener("click", (event) => {
+/* addButton.addEventListener("click", (event) => {
     event.stopPropagation()
 
     let x = Math.random() * canvas.width
     let y = Math.random() * canvas.height
 
     addCircle(x, y)
-})
+}) */
 
 /* Drawing all initial circles */
 for(let i = 0; i < circleAmount; i++) {
