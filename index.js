@@ -230,7 +230,7 @@ function addCircle(x, y) {
         radius: radius,
         dx: Math.random() * 16 - 8,
         dy: Math.random() * -16,
-        color: `rgba(255, 255, 255, ${Math.random()})`,
+        color: `rgba(255, 255, 255, ${getRandomInRange(0.4, 1)})`,
         deleted: false
     }
 
