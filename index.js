@@ -17,13 +17,13 @@ let dragModifier = 1
 let drag = defaultDrag*dragModifier
 
 const defaultElasticity = 0.77
-let elasticityModifier = 1
-let elasticity = defaultElasticity*elasticityModifier
+let elasticity = defaultElasticity
+
 
 function updateVariables() {
     gravity = defaultGravity*gravityModifier
     drag = defaultDrag*dragModifier
-    elasticity = defaultElasticity*elasticityModifier
+    elasticity = elasticityModifier
 }
 
 function getRandomInRange(min, max) {
@@ -143,8 +143,9 @@ dragModifierInput.addEventListener("change", (event) => {
 
 
 const elasticityModifierInput = document.getElementById("elasticityModifier")
-elasticityModifierInput.value = elasticityModifier*100
+elasticityModifierInput.value = defaultElasticity*100
 const elasticityModifierDisplay = document.getElementById("currentElasticityModifier")
+elasticityModifierDisplay.innerHTML = defaultElasticity
 function updateElasticityDisplay() {
     elasticityModifierDisplay.innerHTML = elasticityModifier
 }
