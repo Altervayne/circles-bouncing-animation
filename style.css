@@ -53,6 +53,9 @@ p {
 }
 
 form {
+    display: flex;
+    flex-direction: column;
+
     background-color: rgba(25, 25, 100, .5);
     color: white;
 
@@ -71,6 +74,21 @@ form {
 
 label {
     font-size: 1.2rem;
+}
+
+.input__range {
+    width: 100%;
+}
+
+.label__long {
+    font-size: .58em;
+
+    margin-top: -20px;
+}
+
+.label__number {
+    font-weight: 600;
+    font-size: 1.2em;
 }
 
 .circle__counter__root {

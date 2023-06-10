@@ -17,24 +17,56 @@
             <p class="circle__counter__number" id="circleCounter">0</p>
         </div>
 
+
+
         <form id="animationSettings">
+
+
             <p class="form__paragraph__top">On click,</p>
 
-            <input type="radio" id="clickTypeAdd" name="clickType" value="addCircle"></input>
-            <label for="clickTypeAdd">Add circle</label><br>
+            <div class="input__radio__container">
+                <input type="radio" id="clickTypeAdd" name="clickType" value="addCircle"></input>
+                <label for="clickTypeAdd">Add circle</label>
+            </div>
+            <div class="input__radio__container">
+                <input type="radio" id="clickTypeRecolor" name="clickType" value="recolorCircle"></input>
+                <label for="clickTypeRecolor">Recolor circle</label>
+            </div>
+            <div class="input__radio__container">
+                <input type="radio" id="clickTypeRemove" name="clickType" value="removeCircle"></input>
+                <label for="clickTypeRemove">Remove circle</label>
+            </div>
 
-            <input type="radio" id="clickTypeRecolor" name="clickType" value="recolorCircle"></input>
-            <label for="clickTypeRecolor">Recolor circle</label><br>
 
-            <input type="radio" id="clickTypeRemove" name="clickType" value="removeCircle"></input>
-            <label for="clickTypeRemove">Remove circle</label>
 
 
             <p class="form__paragraph__middle">Max circles</p>
             
-            <input type="range" id="maxCircles" name="maxCircles" min="0" max="100"></input><br>
-            <label for="maxCircles">Current value: <span id="currentMaxCircles"></span></label>
+            <input class="input__range" type="range" id="maxCircles" name="maxCircles" min="0" max="100"></input>
+            <label class="label__medium" for="maxCircles">Current value: <span id="currentMaxCircles"></span></label>
+
+
+
+
+            <p class="form__paragraph__middle">Variables</p>
+
+            <div class="input__range__long__container">
+                <label class="label__long" for="gravityModifier">Gravity Modifier: x<span class="label__number" id="currentGravityModifier">1</span></label><br>
+                <input class="input__range" type="range" id="gravityModifier" name="gravityModifier" min="0" max="200"></input>
+            </div>
+            <div class="input__range__long__container">
+                <label class="label__long" for="dragModifier">Drag Modifier: x<span class="label__number" id="currentDragModifier">1</span></label><br>
+                <input class="input__range" type="range" id="dragModifier" name="dragModifier" min="0" max="200"></input>
+            </div>
+            <div class="input__range__long__container">
+                <label class="label__long" for="elasticityModifier">Elasticity Modifier: x<span class="label__number" id="currentElasticityModifier">1</span></label><br>
+                <input class="input__range" type="range" id="elasticityModifier" name="elasticityModifier" min="0" max="200"></input>
+            </div>
+
+
         </form>
+
+
 
         <canvas id="backgroundCanvas"></canvas>
         

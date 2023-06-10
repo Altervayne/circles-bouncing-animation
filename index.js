@@ -8,9 +8,25 @@ canvas.width = window.innerWidth
 canvas.height = window.innerHeight
 
 /* Declaring all physics variables */
-const gravity = 0.5                     /* Default to 0.5 */
-const drag = 0.005                      /* Default to 0.001 */
-const elasticity = 1.3                  /* Default to 1.3 */
+const defaultGravity = 0.5
+let gravityModifier = 1
+let gravity = defaultGravity*gravityModifier
+
+const defaultDrag = 0.005   
+let dragModifier = 1
+let drag = defaultDrag*dragModifier
+
+const defaultElasticity = 1.3
+let elasticityModifier = 1
+let elasticity = defaultElasticity*elasticityModifier
+
+function updateVariables() {
+    gravity = defaultGravity*gravityModifier
+    drag = defaultDrag*dragModifier
+    elasticity = defaultElasticity*elasticityModifier
+}
+
+
 
 /* Initializing the circles array and asking user how many circles to create */
 let maxCircles = 20                     /* Default to 20 */
@@ -58,6 +74,53 @@ maxCirclesInput.addEventListener("change", (event) => {
 
     updateCounter()
 })
+
+
+/* Getting range inputs to get physics variables modifiers and setting listeners to update them accordingly */
+const gravityModifierInput = document.getElementById("gravityModifier")
+gravityModifierInput.value = gravityModifier*100
+const gravityModifierDisplay = document.getElementById("currentGravityModifier")
+function updateGravityDisplay() {
+    gravityModifierDisplay.innerHTML = gravityModifier 
+}
+gravityModifierInput.addEventListener("change", (event) => {
+    event.preventDefault()
+
+    gravityModifier = gravityModifierInput.value/100
+    updateGravityDisplay()
+    updateVariables()
+})
+
+
+const dragModifierInput = document.getElementById("dragModifier")
+dragModifierInput.value = dragModifier*100
+const dragModifierDisplay = document.getElementById("currentDragModifier")
+function updateDragDisplay() {
+    dragModifierDisplay.innerHTML = dragModifier
+}
+dragModifierInput.addEventListener("change", (event) => {
+    event.preventDefault()
+
+    dragModifier = dragModifierInput.value/100
+    updateDragDisplay()
+    updateVariables()
+})
+
+
+const elasticityModifierInput = document.getElementById("elasticityModifier")
+elasticityModifierInput.value = elasticityModifier*100
+const elasticityModifierDisplay = document.getElementById("currentElasticityModifier")
+function updateElasticityDisplay() {
+    elasticityModifierDisplay.innerHTML = elasticityModifier
+}
+elasticityModifierInput.addEventListener("change", (event) => {
+    event.preventDefault()
+
+    elasticityModifier = elasticityModifierInput.value/100
+    updateElasticityDisplay()
+    updateVariables()
+})
+
 
 
 /* Getting circle counter id to display amount of circles */
