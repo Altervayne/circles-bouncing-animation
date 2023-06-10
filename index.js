@@ -40,7 +40,7 @@ const circleAmount = prompt(`How many circles would you like to begin with ? (de
 
 /* Getting radio input elements to select click type */
 const clickTypeInputs = document.getElementsByName("clickType")
-let selectedValue = ''
+let selectedClickType = ''
 
 /* Listening for selection change */
 clickTypeInputs.forEach(input => {
@@ -49,7 +49,27 @@ clickTypeInputs.forEach(input => {
 
         clickTypeInputs.forEach(input => {
             if(input.checked) {
-                selectedValue = input.value
+                selectedClickType = input.value
+            }
+        })
+    })
+})
+
+
+/* Getting radio input elements to select border behavior */
+const borderBehaviorInputs = document.getElementsByName("borderBehavior")
+const borderBounceInput = document.getElementById("borderBounce")
+borderBounceInput.checked = true
+let selectedBehavior = 'borderBounce'
+
+/* Listening for selection change */
+borderBehaviorInputs.forEach(input => {
+    input.addEventListener("change", (event) => {
+        event.stopPropagation()
+
+        borderBehaviorInputs.forEach(input => {
+            if(input.checked) {
+                selectedBehavior = input.value
             }
         })
     })
