@@ -13,7 +13,7 @@ const drag = 0.005                      /* Default to 0.001 */
 const elasticity = 1.3                  /* Default to 1.3 */
 
 /* Initializing the circles array and asking user how many circles to create */
-const maxCircles = 10                   /* Default to 10 */
+let maxCircles = 10                   /* Default to 10 */
 let circles = []
 const circleAmount = prompt("How many circles ?", "0")
 
@@ -37,6 +37,20 @@ clickTypeInputs.forEach(input => {
             }
         })
     })
+})
+
+
+/* Getting range input to get max circles amount */
+const maxCirclesInput = document.getElementById("maxCircles")
+const maxCirclesDisplay = document.getElementById("currentMaxCircles")
+maxCirclesInput.value = maxCircles
+maxCirclesDisplay.innerHTML = maxCircles
+
+maxCirclesInput.addEventListener("change", (event) => {
+    event.stopPropagation()
+
+    maxCircles = maxCirclesInput.value
+    maxCirclesDisplay.innerHTML = maxCirclesInput.value
 })
 
 

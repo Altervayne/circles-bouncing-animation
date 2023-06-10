@@ -12,8 +12,13 @@
 
     <body>
         <h1>Cool Animation</h1>
+
+        <div class="circle__counter__root">
+            <p class="circle__counter__number">0</p>
+        </div>
+
         <form id="animationSettings">
-            <p>On click,</p>
+            <p class="form__paragraph__top">On click,</p>
 
             <input type="radio" id="clickTypeAdd" name="clickType" value="addCircle"></input>
             <label for="clickTypeAdd">Add circle</label><br>
@@ -23,6 +28,12 @@
 
             <input type="radio" id="clickTypeRemove" name="clickType" value="removeCircle"></input>
             <label for="clickTypeRemove">Remove circle</label>
+
+
+            <p class="form__paragraph__middle">Max circles</p>
+            
+            <input type="range" id="maxCircles" name="maxCircles" min="0" max="100"></input><br>
+            <label for="maxCircles">Current value: <span id="currentMaxCircles"></span></label>
         </form>
 
         <canvas id="backgroundCanvas"></canvas>

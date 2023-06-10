@@ -39,10 +39,16 @@ h1 {
 }
 
 p {
-    margin: 0;
-    margin-bottom: 15px;
-
     padding: 0;
+    margin: 0;
+}
+
+.form__paragraph__top {
+    margin-bottom: 15px;
+}
+
+.form__paragraph__middle {
+    margin: 15px 0;
 }
 
 form {
@@ -56,9 +62,13 @@ form {
     border: none;
     outline: none;
 
+    position: fixed;
+    top: 2%;
+    right: 2%;
     z-index: 3;
 }
 
 label {
     font-size: 1.2rem;
 }
+
