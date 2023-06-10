@@ -22,6 +22,27 @@ const circleAmount = prompt("How many circles ?", "0")
 /* --------------------------------------------------------------------------------------------- */
 
 
+/* Getting radio input elements to select click type */
+const clickTypeInputs = document.getElementsByName("clickType")
+let selectedValue = ''
+
+/* Listening for selection change */
+clickTypeInputs.forEach(input => {
+    input.addEventListener("change", (event) => {
+        event.stopPropagation()
+
+        clickTypeInputs.forEach(input => {
+            if(input.checked) {
+                selectedValue = input.value
+            }
+        })
+    })
+})
+
+
+/* --------------------------------------------------------------------------------------------- */
+
+
 /* Initializing createCircle function, adding event listener to button and creating base circles */
 function addCircle(x, y) {
     const radius = Math.random() * 50 + 10
@@ -82,20 +103,21 @@ function canvasInteraction(event) {
 
 
 
-    addCircle(clickX, clickY)
-    /* recolorCircle(clickX, clickY)
-    removeCircle(clickX, clickY) */
+    switch(selectedValue) {
+        case '':
+            console.log("No action selected.")
+            break
+        case 'addCircle':
+            addCircle(clickX, clickY)
+            break
+        case 'recolorCircle':
+            recolorCircle(clickX, clickY)
+            break
+        case 'removeCircle':
+            removeCircle(clickX, clickY)
+            break
+    }
 }
-
-/* Adding event listener on button to add a circle on click */
-/* addButton.addEventListener("click", (event) => {
-    event.stopPropagation()
-
-    let x = Math.random() * canvas.width
-    let y = Math.random() * canvas.height
-
-    addCircle(x, y)
-}) */
 
 /* Drawing all initial circles */
 for(let i = 0; i < circleAmount; i++) {
