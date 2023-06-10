@@ -55,6 +55,8 @@ maxCirclesInput.addEventListener("change", (event) => {
     while(circles.length > maxCircles) {
         circles.pop()
     }
+
+    updateCounter()
 })
 
 
@@ -64,6 +66,31 @@ const circleCounter = document.getElementById("circleCounter")
 function updateCounter() {
     circleCounter.innerHTML = circles.length
 }
+
+
+/* Dealing with window being resized */
+function windowResizeHandler() {
+    console.log("window resize detected")
+
+    const previousWidth = canvas.width
+    const previousHeight = canvas.height
+    const newWidth = window.innerWidth
+    const newHeight = window.innerHeight
+
+    const xRatio = previousWidth/newWidth
+    const yRatio = previousHeight/newHeight
+
+    canvas.width = newWidth
+    canvas.height = newHeight
+
+
+    for(let circle of circles) {
+        circle.x /= xRatio
+        circle.y /= yRatio
+    }
+}
+
+window.addEventListener('resize', windowResizeHandler, true)
 
 
 /* --------------------------------------------------------------------------------------------- */

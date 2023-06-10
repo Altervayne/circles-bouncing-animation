@@ -48,7 +48,8 @@ p {
 }
 
 .form__paragraph__middle {
-    margin: 15px 0;
+    margin-top: 30px;
+    margin-bottom: 15px;
 }
 
 form {
