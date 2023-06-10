@@ -16,7 +16,7 @@ const defaultDrag = 0.005
 let dragModifier = 1
 let drag = defaultDrag*dragModifier
 
-const defaultElasticity = 1.3
+const defaultElasticity = 0.77
 let elasticityModifier = 1
 let elasticity = defaultElasticity*elasticityModifier
 
@@ -275,21 +275,21 @@ function drawCircles() {
         if(circle.x + circle.radius > canvas.width) {
             circle.x = canvas.width - circle.radius
             circle.dx *= -1
-            circle.dx /= elasticity
+            circle.dx *= elasticity
         } else if(circle.x - circle.radius < 0) {
             circle.x = circle.radius
             circle.dx *= -1
-            circle.dx /= elasticity
+            circle.dx *= elasticity
         }
 
         if(circle.y + circle.radius > canvas.height) {
             circle.y = canvas.height - circle.radius
             circle.dy *= -1
-            circle.dy /= elasticity
+            circle.dy *= elasticity
         } else if(circle.y - circle.radius < 0) {
             circle.y = circle.radius
             circle.dy *= -1
-            circle.dy /= elasticity
+            circle.dy *= elasticity
         }
 
 
