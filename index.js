@@ -26,6 +26,10 @@ function updateVariables() {
     elasticity = defaultElasticity*elasticityModifier
 }
 
+function getRandomInRange(min, max) {
+    return Math.random() * (max-min) + min
+}
+
 
 
 /* Initializing the circles array and asking user how many circles to create */
@@ -242,7 +246,7 @@ function addCircle(x, y) {
 function recolorCircle(clickX, clickY) {
     for(let circle of circles) {
         if(Math.pow((clickX - circle.x), 2) + Math.pow((clickY - circle.y), 2) <= Math.pow(circle.radius, 2)) {
-            circle.color = "rgba(255, 0, 0, 1)"
+            circle.color = `rgba(${getRandomInRange(0, 255)}, ${getRandomInRange(0, 255)}, ${getRandomInRange(0, 255)}, ${Math.random()})`
         }
     }
 }
