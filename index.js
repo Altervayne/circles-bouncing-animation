@@ -23,7 +23,6 @@ let elasticity = defaultElasticity
 function updateVariables() {
     gravity = defaultGravity*gravityModifier
     drag = defaultDrag*dragModifier
-    elasticity = elasticityModifier
 }
 
 function getRandomInRange(min, max) {
@@ -147,14 +146,13 @@ elasticityModifierInput.value = defaultElasticity*100
 const elasticityModifierDisplay = document.getElementById("currentElasticityModifier")
 elasticityModifierDisplay.innerHTML = defaultElasticity
 function updateElasticityDisplay() {
-    elasticityModifierDisplay.innerHTML = elasticityModifier
+    elasticityModifierDisplay.innerHTML = elasticity
 }
 elasticityModifierInput.addEventListener("change", (event) => {
     event.preventDefault()
 
-    elasticityModifier = elasticityModifierInput.value/100
+    elasticity = elasticityModifierInput.value/100
     updateElasticityDisplay()
-    updateVariables()
 })
 
 
@@ -285,6 +283,8 @@ function canvasInteraction(event) {
         case 'removeCircle':
             removeCircle(clickX, clickY)
             break
+        default:
+            break
     }
 }
 
@@ -380,6 +380,8 @@ function drawCircles() {
                 break
             case 'borderWarp':
                 borderWarp(circle)
+                break
+            default:
                 break
         }
 
